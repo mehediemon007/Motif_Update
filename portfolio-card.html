@@ -6,10 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
     <style>
+
+        .testimonial__slider .swiper {
+            padding-left: 10%;
+        }
 
         .testimonial__image {
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial__image img{
+            max-width: 100%;
+            height: max-content;
         }
 
         .testimonial__image::before {
@@ -25,7 +39,7 @@
 
         .testimonial__name {
             display: block;
-            color: #fff;
+            color: #000;
             font-family: "ClashDisplay", Sans-serif;
             font-size: 24px;
             font-weight: 600;
@@ -35,7 +49,7 @@
         }
 
         .testimonial__title {
-            color: #fff;
+            color: #000;
             font-family: "Helvetica-Neu-MOTIF", Sans-serif;
             font-size: 15px;
             font-weight: 500;
@@ -48,19 +62,79 @@
 <body>
 
     <main>
-        <div class="swiper-slide">
-            <div class="testimonial">
-                <div class="testimonial__image">
-                    <img decoding="async" src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE">
+
+        <div class="testimonial__slider">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="testimonial__image">
+                                <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
+                            </div>
+                            <cite class="testimonial__cite">
+                                <span class="testimonial__name">LACE</span>
+                                <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
+                            </cite>
+                        </div>
+                    </div>
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="testimonial__image">
+                                <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
+                            </div>
+                            <cite class="testimonial__cite">
+                                <span class="testimonial__name">LACE</span>
+                                <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
+                            </cite>
+                        </div>
+                    </div>
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="testimonial__image">
+                                <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
+                            </div>
+                            <cite class="testimonial__cite">
+                                <span class="testimonial__name">LACE</span>
+                                <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
+                            </cite>
+                        </div>
+                    </div>
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="testimonial__image">
+                                <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
+                            </div>
+                            <cite class="testimonial__cite">
+                                <span class="testimonial__name">LACE</span>
+                                <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
+                            </cite>
+                        </div>
+                    </div>
                 </div>
-                <cite class="testimonial__cite">
-                    <span class="testimonial__name">LACE</span>
-                    <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
-                </cite>
             </div>
         </div>
     </main>
 
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script type="text/javascript">
+
+    const swiper = new Swiper('.swiper', {
+        loop: false,
+        pagination: false,
+        navigation: false,
+        spaceBetween: 24,
+        slidesPerView: 2.5,
+    });
+
+</script>
 
 </html>
