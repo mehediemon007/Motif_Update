@@ -133,6 +133,18 @@
         navigation: false,
         spaceBetween: 24,
         slidesPerView: 2.5,
+        breakpoints: {
+            // when window width is >= 320px
+            320: {
+                slidesPerView: 1.5,
+                spaceBetween: 16
+            },
+            // when window width is >= 480px
+            768: {
+                slidesPerView: 2.5,
+                spaceBetween: 24
+            }
+        }
     });
 
 </script>
