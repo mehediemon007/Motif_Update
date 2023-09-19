@@ -14,11 +14,24 @@
             padding-left: 10%;
         }
 
-        .testimonial:hover {
+        .testimonial__slider .testimonial {
+            position: relative;
+        }
+
+        .testimonial__slider .testimonial:hover {
             cursor: pointer;
         }
 
-        
+        .testimonial__slider .slide-nmbr {
+            position: absolute;
+            top: 8px;
+            right: -28px;
+            color: #000;
+            font-family: "ClashDisplay", Sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            transform: rotate(-90deg);
+        }
 
         .testimonial__slider .testimonial:hover .testimonial__image,
         .testimonial__slider .testimonial:hover .testimonial__image::before,
@@ -130,6 +143,7 @@
                     <!-- Slides -->
                     <div class="swiper-slide">
                         <div class="testimonial">
+                            <span class="slide-nmbr">00-1</span>
                             <div class="testimonial__image">
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
@@ -151,6 +165,7 @@
                     <!-- Slides -->
                     <div class="swiper-slide">
                         <div class="testimonial">
+                            <span class="slide-nmbr">00-2</span>
                             <div class="testimonial__image">
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
@@ -172,6 +187,7 @@
                     <!-- Slides -->
                     <div class="swiper-slide">
                         <div class="testimonial">
+                            <span class="slide-nmbr">00-3</span>
                             <div class="testimonial__image">
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
@@ -193,6 +209,7 @@
                     <!-- Slides -->
                     <div class="swiper-slide">
                         <div class="testimonial">
+                            <span class="slide-nmbr">00-4</span>
                             <div class="testimonial__image">
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
@@ -232,12 +249,12 @@
             // when window width is >= 320px
             320: {
                 slidesPerView: 1.5,
-                spaceBetween: 16
+                spaceBetween: 24
             },
             // when window width is >= 480px
             768: {
                 slidesPerView: 2.5,
-                spaceBetween: 24
+                spaceBetween: 40
             }
         }
     });
