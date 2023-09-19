@@ -14,19 +14,43 @@
             padding-left: 10%;
         }
 
+        .testimonial:hover {
+            cursor: pointer;
+        }
+
+        
+
+        .testimonial__slider .testimonial:hover .testimonial__image,
+        .testimonial__slider .testimonial:hover .testimonial__image::before,
+        .testimonial__slider .testimonial:hover .testimonial__image img {
+            border-radius: 50%;
+        }
+
         .testimonial__image {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: border-radius .5s cubic-bezier(.165,.84,.44,1);
+            overflow: hidden;
         }
 
         .testimonial__image img{
             max-width: 100%;
             height: max-content;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1) rotate(5deg);
+            transition: all .5s cubic-bezier(.165,.84,.44,1);
         }
 
-        .testimonial__image::before {
+        .testimonial.animate .testimonial__image img {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) rotate(0);
+        }
+
+        .testimonial.animate .testimonial__image::before {
             content: "";
             position: absolute;
             top: 0;
@@ -35,6 +59,41 @@
             height: 100%;
             width: 100%;
             z-index: 1;
+            transition: border-radius .5s cubic-bezier(.165,.84,.44,1);
+        }
+
+        .testimonials__tags {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #000;
+        }
+
+        .testimonials__tags .tags {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonials__tags span {
+            position: relative;
+            display: inline-block;
+            color: #000;
+            font-family: "Helvetica-Neu-MOTIF", Sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .testimonials__tags .tags span:not(:last-of-type)::after {
+            position: absolute;
+            content: "-";
+            font-size: 16px;
+            top: 0;
+            right: -10px;
         }
 
         .testimonial__name {
@@ -75,6 +134,15 @@
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
                             <cite class="testimonial__cite">
+                                <div class="testimonials__tags">
+                                    <div class="tags">
+                                        <span>Research</span>
+                                        <span>Strategy</span>
+                                        <span>Design</span>
+                                        <span>Development</span>
+                                    </div>
+                                    <span>2023</span>
+                                </div>
                                 <span class="testimonial__name">LACE</span>
                                 <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
                             </cite>
@@ -87,6 +155,15 @@
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
                             <cite class="testimonial__cite">
+                                <div class="testimonials__tags">
+                                    <div class="tags">
+                                        <span>Research</span>
+                                        <span>Strategy</span>
+                                        <span>Design</span>
+                                        <span>Development</span>
+                                    </div>
+                                    <span>2023</span>
+                                </div>
                                 <span class="testimonial__name">LACE</span>
                                 <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
                             </cite>
@@ -99,6 +176,15 @@
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
                             <cite class="testimonial__cite">
+                                <div class="testimonials__tags">
+                                    <div class="tags">
+                                        <span>Research</span>
+                                        <span>Strategy</span>
+                                        <span>Design</span>
+                                        <span>Development</span>
+                                    </div>
+                                    <span>2023</span>
+                                </div>
                                 <span class="testimonial__name">LACE</span>
                                 <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
                             </cite>
@@ -111,6 +197,15 @@
                                 <img src="https://wemotif.com/finalstaging/wp-content/uploads/2023/07/LACE.png" alt="LACE"/>
                             </div>
                             <cite class="testimonial__cite">
+                                <div class="testimonials__tags">
+                                    <div class="tags">
+                                        <span>Research</span>
+                                        <span>Strategy</span>
+                                        <span>Design</span>
+                                        <span>Development</span>
+                                    </div>
+                                    <span>2023</span>
+                                </div>
                                 <span class="testimonial__name">LACE</span>
                                 <span class="testimonial__title">Strategy, Marketing &amp; CX</span>
                             </cite>
@@ -146,6 +241,27 @@
             }
         }
     });
+
+    const observer = new IntersectionObserver(intersections => {
+        intersections.forEach(({
+            target,
+            isIntersecting
+        }) => {
+            setTimeout(()=>{
+                target.classList.toggle('animate', isIntersecting);
+            },1000)
+        });
+        }, {
+        threshold: 0
+    });
+
+    const testiCards = document.querySelectorAll('.testimonial');
+
+    testiCards.forEach(div => {
+        observer.observe(div);
+    });
+
+
 
 </script>
 
