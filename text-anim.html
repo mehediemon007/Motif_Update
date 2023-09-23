@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        section {
+            height: 100vh;
+            padding: 0 clamp(4rem, 12vw, 20rem);
+            display: grid;
+            place-content: center;
+        }
+
+        p {
+            font-size: clamp(2rem, 5vw, 8rem);
+        }
+
+        &:nth-of-type(1) {
+            border-bottom: 1px solid black;
+        }
+
+        &:nth-of-type(3) {
+            background: #ffff00;
+        }
+
+        &:nth-of-type(4) {
+            background: rgb(29, 29, 29);
+            color: white;
+        }
+
+        .decorator {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .title-wrap {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            padding-left: 8px;
+        }
+
+        .title {
+            display: inline-block;
+            width: max-content;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .hero-text .text {
+            position: relative;
+            display: inline-block;
+            font-size: 10rem;
+            line-height: .75;
+            letter-spacing: -.01em;
+            font-family: FoundersGrotesk,Roboto,sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            vertical-align: top;
+        }
+
+        .hero-text .text.text.has-img {
+            transform: translateX(-1em);
+        }
+
+        .hero-text.in-view .text.text.has-img {
+            transition: transform 1.2s cubic-bezier(.86,0,.07,.995);
+            transform: translateX(1.2rem);
+            transition-delay: .7s;
+        }
+
+        .hero-text .text.has-img::before {
+            content: "";
+            transition: -webkit-clip-path 1.2s cubic-bezier(.86,0,.07,.995);
+            transition: clip-path 1.2s cubic-bezier(.86,0,.07,.995);
+            transition: clip-path 1.2s cubic-bezier(.86,0,.07,.995), -webkit-clip-path 1.2s cubic-bezier(.86,0,.07,.995);
+            width: 1em;
+            height: 100%;
+            display: inline-block;
+            vertical-align: top;
+            background-image: url("./content-image01.jpg");
+            background-size: cover;
+            background-color: currentColor;
+            border-radius: 0.6rem;
+            -webkit-clip-path: polygon(0 0,0 0,0 100%,0 100%);
+            clip-path: polygon(0 0,0 0,0 100%,0 100%);
+            position: relative;
+            top: 0;
+            z-index: 1;
+        }
+
+        .hero-text.in-view .text.has-img::before {
+            webkit-clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+            transition-delay: .7s;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <section>
+        <div><span class="decorator">/</span> <span class="title-wrap"><span class="title">Our Culture</span></span></div>
+        <p class="reveal-text">The web isn't static anymore, interactivity and motion now dominate.</p>
+    </section>
+
+
+    <section>
+        <h1 class="hero-text">
+            <span class="text">We make</span>
+            <span class="text has-img">eye-opening</span>
+            <span class="text">presentations</span>
+        </h1>
+    </section>
+
+    <section>
+        <h2>Scroll down for awesomeness.</h2>
+    </section>
+
+    <section>
+        <p class="reveal-type" data-bg-color="#cccccc" data-fg-color="teal">Systematically ushering in a new generation of amazing designers from across the globe.</p>
+    </section>
+
+    <section>
+        <p class="reveal-type" data-bg-color="#b6b600" data-fg-color="black">Modern UI designers will expand their skillsets to include frontend.</p>
+    </section>
+
+    <section>
+        <p class="reveal-type" data-bg-color="#353535" data-fg-color="red">The web isn't static anymore, interactivity and motion now dominate.</p>
+    </section>
+
+    
+
+    <section></section>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script> 
+<script src="https://unpkg.com/split-type"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+<script type="text/javascript">
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    const splitTypes = document.querySelectorAll('.reveal-type')
+
+    splitTypes.forEach((char,i) => {
+
+        const bg = char.dataset.bgColor
+        const fg = char.dataset.fgColor
+
+        const text = new SplitType(char, { types: 'chars'})
+
+        gsap.fromTo(text.chars, 
+            {
+                color: bg,
+            },
+            {
+                color: fg,
+                duration: 0.3,
+                stagger: 0.02,
+                scrollTrigger: {
+                    trigger: char,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: true,
+                    markers: false,
+                    toggleActions: 'play play reverse reverse'
+                }
+        })
+    })
+
+
+    const tl = gsap.timeline({pasued: true});
+
+    const splitLines = document.querySelector('.reveal-text')
+
+    const text = new SplitType(splitLines, { types: 'lines'})
+
+    // gsap.set(".title", {x: "-100%", opacity: 0});
+
+    gsap.from(".title", 1.8,{
+        x: "-100%",
+        opacity: 0,
+        ease: "power4.out",
+        stagger: {
+            amount: 0.3
+        }
+    })
+
+    tl.from(text.lines, 1.8, {
+        y: -100,
+        opacity:0,
+        ease: "power4.out",
+        delay: .5,
+        stagger: {
+            amount: 0.3
+        }
+    })
+
+
+    gsap.to(".hero-text", {
+        scrollTrigger: {
+            trigger: ".hero-text",
+            onEnter() {
+                document.querySelector('.hero-text').classList.add('in-view')
+            },
+            onLeave() {
+                document.querySelector('.hero-text').classList.remove('in-view')
+            },
+            onEnterBack() {
+                document.querySelector('.hero-text').classList.add('in-view')
+            },
+            onLeaveBack() {
+                document.querySelector('.hero-text').classList.remove('in-view')
+            }
+        }
+    });
+
+    const lenis = new Lenis()
+
+    lenis.on('scroll', (e) => {
+        
+    })
+
+    function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+</script>
+
+</html>
