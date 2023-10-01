@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Loading Animation</title>
+    
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: 'Monument';
+            overflow: hidden;
+
+        }
+
+        .animation{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            background-color: black;
+            color: white;
+            overflow: hidden;
+            justify-content: center;
+            z-index: 100;
+            width: 100%;
+        }
+        .animate{
+            font-size: 100px;
+            text-transform: uppercase;
+            color: #e0e0e0;
+            animation: animate 10s linear infinite;
+        }
+        @keyframes animate {
+            0%{
+                transform: translateX(-100%);
+            }
+            100%{
+                transform: translateX(100%);
+            }
+        }
+        .animate span{
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1px #39ff14;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .container{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f7f7;
+            width: 100%;
+            height: 100vh;
+        }
+        .container h1{
+            color: black;
+            font-family: 'Neutral Face';
+            text-transform: uppercase;
+            overflow: hidden;
+        }
+    </style>
+ </head>
+  <body>
+   <!-- animation  -->
+   <div class="animation">
+    <h1 class="animate">loading<span>loading</span>loading<span>loading</span></h1>
+    <h1 class="animate">loading<span>loading</span>loading<span>loading</span></h1>
+    <h1 class="animate">loading<span>loading</span>loading<span>loading</span></h1>
+    <h1 class="animate">loading<span>loading</span>loading<span>loading</span></h1>
+    <h1 class="animate">loading<span>loading</span>loading<span>loading</span></h1>
+    <h1 class="animate">loading<span>loading</span>loading<span>loading</span></h1>
+   </div>
+
+   <!-- main- page  -->
+   <div class="container">
+     <h1>Taimoor Shahzada</h1>
+   </div>
+    <!-- script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script type="text/javascript">
+
+        const timeline = gsap.timeline();
+        timeline.to(".animate",{
+            delay: 3,
+            duration: .5,
+            opacity: 0
+        });
+        timeline.to(".animation",{
+            delay: 1,
+            duration: 1,
+            // y: "100%",
+            y: "-100%",
+            ease: "power4.out"
+            });
+        timeline.to(".animation",{
+            zIndex: -1
+        });
+        timeline.from(".container h1",{
+            delay: .5,
+            duration: .8,
+            skewY: 10,
+            y: 100,
+            x: -199,
+            opacity: 0
+        })
+    </script>
+  </body>
+</html>
