@@ -128,6 +128,109 @@
             font-style: normal;
         }
 
+        /* Testimonial 2 */
+
+        .testimonial__slider2 .swiper {
+            background-color: #000;
+            padding-bottom: 150px;
+            margin: 50px 0;
+        }
+
+        .testimonial2 {
+            display: flex;
+            padding: 32px;
+        }
+
+        .testimonial2 .qodef-e-quote {
+            width: 1em;
+            margin: 0 35px 0 0;
+            color: #FFFFFF;
+            font-size: 51px;
+        }
+
+        .testimonial2 .qodef-e-quote svg {
+            width: 1em;
+            fill: currentColor;
+            stroke: currentColor;
+        }
+
+        .testimonial2 .qodef-e-text {
+            color: #FFFFFF;
+            font-family: "Helvetica-Neu-MOTIF", Sans-serif;
+            font-size: 24px;
+            font-weight: 500;
+            margin: 0 0 9px;
+        }
+
+        .testimonial2 .qodef-e-author p {
+            color: #7A7A7A;
+            font-family: "ClashDisplay", Sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .testimonial__slider2 .swiper-btns {
+            position: absolute;
+            bottom: 50px;
+            right: 24px;
+            display: flex;
+            gap: 50px;
+        }
+
+        .testimonial__slider2 .swiper-btns div {
+            position: relative;
+            left: auto;
+            right: auto;
+        }
+
+        /* Line */
+
+        .border-line-btm {
+            background: #0f0f0f;
+            height: 2px;
+            width: 100%;
+            transform: scale(0);
+            transform-origin: left;
+        }
+
+        .border-line-btm.right {
+            transform-origin: right;
+        }
+
+        /* Button Line */
+
+        .wavy-link {
+            position: relative;
+            display: inline-block;
+            font-family: lust-fine, sans-serif;
+            color: #000;
+            text-decoration: none;
+            overflow: hidden;
+            padding: 7px 0;
+        }
+
+        .link__graphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            fill: none;
+            stroke: #000;
+            stroke-width: 1px;
+        }
+
+        .link__graphic--slide {
+            top: -3px;
+            stroke-width: 2px;
+            transition: transform 0.7s;
+            transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+        }
+
+        .link:hover .link__graphic--slide {
+            transform: translate3d(-66.6%, 0, 0);
+        }
+
     </style>
 </head>
 
@@ -231,11 +334,135 @@
                 </div>
             </div>
         </div>
+
+        <!-- Testimonial 2 -->
+
+        <div class="testimonial__slider2">
+            <div class="border-line-btm left bg-black"></div>
+
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial2">
+                            <div class="qodef-e-quote">
+                                <svg class="qodef-e-quote-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 190.5 148" xml:space="preserve">
+                                    <g>
+                                        <path d="M37.7,146.3L2.1,124.6C19.3,100,28.2,74.1,28.8,46.7V2.3H90v38.8c0,19.3-5,38.8-15.1,58.4C64.9,119,52.5,134.6,37.7,146.3z M133.7,146.3l-35.6-21.7c17.2-24.5,26.2-50.5,26.8-77.9V2.3h61.2v38.8c0,19.3-5,38.8-15.1,58.4C160.9,119,148.5,134.6,133.7,146.3z"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <h3 class="qodef-e-text">The flexibility is key. I’ve worked with people in my past and it has been very difficult to get things changed and they were very unaccommodating. MOTIF’s communication has been very clear.  I have been in the fashion ecommerce space for 15 years and they have been one of the most professional, fast, flexible, communicative companies I have worked with!</h3>
+                                <div class="qodef-e-author">
+                                    <p class="qodef-e-author-name">Esther Chang</p>
+                                    <div class="qodef-e-author-job">
+                                        <p>CMO</p>
+                                        <p>Tenshoppe &amp;amp; Ububba</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial2">
+                            <div class="qodef-e-quote">
+                                <svg class="qodef-e-quote-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 190.5 148" xml:space="preserve">
+                                    <g>
+                                        <path d="M37.7,146.3L2.1,124.6C19.3,100,28.2,74.1,28.8,46.7V2.3H90v38.8c0,19.3-5,38.8-15.1,58.4C64.9,119,52.5,134.6,37.7,146.3z M133.7,146.3l-35.6-21.7c17.2-24.5,26.2-50.5,26.8-77.9V2.3h61.2v38.8c0,19.3-5,38.8-15.1,58.4C160.9,119,148.5,134.6,133.7,146.3z"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <h3 class="qodef-e-text">The flexibility is key. I’ve worked with people in my past and it has been very difficult to get things changed and they were very unaccommodating. MOTIF’s communication has been very clear.  I have been in the fashion ecommerce space for 15 years and they have been one of the most professional, fast, flexible, communicative companies I have worked with!</h3>
+                                <div class="qodef-e-author">
+                                    <p class="qodef-e-author-name">Esther Chang</p>
+                                    <div class="qodef-e-author-job">
+                                        <p>CMO</p>
+                                        <p>Tenshoppe &amp;amp; Ububba</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial2">
+                            <div class="qodef-e-quote">
+                                <svg class="qodef-e-quote-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 190.5 148" xml:space="preserve">
+                                    <g>
+                                        <path d="M37.7,146.3L2.1,124.6C19.3,100,28.2,74.1,28.8,46.7V2.3H90v38.8c0,19.3-5,38.8-15.1,58.4C64.9,119,52.5,134.6,37.7,146.3z M133.7,146.3l-35.6-21.7c17.2-24.5,26.2-50.5,26.8-77.9V2.3h61.2v38.8c0,19.3-5,38.8-15.1,58.4C160.9,119,148.5,134.6,133.7,146.3z"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <h3 class="qodef-e-text">The flexibility is key. I’ve worked with people in my past and it has been very difficult to get things changed and they were very unaccommodating. MOTIF’s communication has been very clear.  I have been in the fashion ecommerce space for 15 years and they have been one of the most professional, fast, flexible, communicative companies I have worked with!</h3>
+                                <div class="qodef-e-author">
+                                    <p class="qodef-e-author-name">Esther Chang</p>
+                                    <div class="qodef-e-author-job">
+                                        <p>CMO</p>
+                                        <p>Tenshoppe &amp;amp; Ububba</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial2">
+                            <div class="qodef-e-quote">
+                                <svg class="qodef-e-quote-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 190.5 148" xml:space="preserve">
+                                    <g>
+                                        <path d="M37.7,146.3L2.1,124.6C19.3,100,28.2,74.1,28.8,46.7V2.3H90v38.8c0,19.3-5,38.8-15.1,58.4C64.9,119,52.5,134.6,37.7,146.3z M133.7,146.3l-35.6-21.7c17.2-24.5,26.2-50.5,26.8-77.9V2.3h61.2v38.8c0,19.3-5,38.8-15.1,58.4C160.9,119,148.5,134.6,133.7,146.3z"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <h3 class="qodef-e-text">The flexibility is key. I’ve worked with people in my past and it has been very difficult to get things changed and they were very unaccommodating. MOTIF’s communication has been very clear.  I have been in the fashion ecommerce space for 15 years and they have been one of the most professional, fast, flexible, communicative companies I have worked with!</h3>
+                                <div class="qodef-e-author">
+                                    <p class="qodef-e-author-name">Esther Chang</p>
+                                    <div class="qodef-e-author-job">
+                                        <p>CMO</p>
+                                        <p>Tenshoppe &amp;amp; Ububba</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-btns">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
+            <div class="border-line-btm right bg-black"></div>
+        </div>
+
+        <!-- Button Link -->
+
+        <div class="button-card-wrapper">
+            <a href="#" class="link wavy-link">
+                <div>Discover more</div>
+                <div class="line-graphic w-embed">
+                    <svg class="link__graphic link__graphic--slide" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+                    </svg>
+                </div>
+            </a>
+        </div>
     </main>
 
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script> 
 
 <script type="text/javascript">
 
@@ -276,6 +503,39 @@
 
     testiCards.forEach(div => {
         observer.observe(div);
+    });
+
+
+    // Slider 2
+
+    const testiSlider = new Swiper('.testimonial__slider2 .swiper', {
+        loop: true,
+        pagination: false,
+        navigation: true,
+        slidesPerView: 1,
+        autoplay: {
+            delay: 2000,
+        },
+        speed:2000,
+        grabCursor: true
+    });
+
+
+    // Line Animation
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    const leftLines = gsap.utils.toArray('.border-line-btm');
+    leftLines.forEach((line) => {
+
+        gsap.to(line, 2, {
+            scrollTrigger: {
+                trigger: line,
+            },
+            scale: 1,
+            ease: "power3.out",
+        });
+        
     });
 
 
