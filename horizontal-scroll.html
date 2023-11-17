@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+
+        body {
+            margin:0;
+            background:#15151e;
+            overflow-x:hidden;
+        }
+
+        .racesWrapper {
+            position: relative;
+            padding: 200px 0;
+        }
+
+        .races {
+            width:fit-content;
+            display:flex;
+            flex-wrap:nowrap;
+            gap: 24px;
+        }
+
+        .races.no-slide {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            flex-wrap: wrap;
+        }
+
+        .races div img {
+            width: 500px;
+            height: auto;
+        }
+
+        .races.no-slide img {
+            width: 100px;
+        }
+        
+        .lightBG {
+            background:#313143;
+        }
+
+        .space-50vh {
+            height:50vh;
+        }
+
+        .space-100vh {
+            height:100vh;
+        }
+
+        #img-lg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(0);
+            transition: transform .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+    </style>
+
+</head>
+<body>
+    
+        <!-- <div class="space-50vh lightBG"></div> -->
+
+        <div class="racesWrapper slide">
+            <!-- <img src="./imgs/1.jpg" alt="1" id="img-lg"> -->
+
+            <div class="races">
+                <div>
+                    <img src="./imgs/1.jpg" alt="1">
+                </div>
+                <div>
+                    <img src="./imgs/2.jpg" alt="1">
+                </div>
+                <div>
+                    <img src="./imgs/3.jpg" alt="1">
+                </div>
+                <div>
+                    <img src="./imgs/1.jpg" alt="1">
+                </div>
+                <div>
+                    <img src="./imgs/2.jpg" alt="1">
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="space-100vh lightBG"></div> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script> 
+
+    <script>
+        
+
+
+        const races = document.querySelector(".races");
+        console.log(races.offsetWidth)
+
+        function getScrollAmount() {
+            let racesWidth = races.scrollWidth;
+            return -(racesWidth - (window.innerWidth / 2));
+        }
+
+        const tween = gsap.to(races, {
+            x: getScrollAmount,
+            duration: 3,
+            ease: "none",
+        });
+
+
+        ScrollTrigger.create({
+            trigger:".racesWrapper.slide",
+            start:"top top",
+            end: () => `+=${getScrollAmount() * -1}`,
+            pin:true,
+            animation:tween,
+            scrub:1,
+            invalidateOnRefresh:true,
+            markers:true
+        })
+
+        // const imgs = document.querySelectorAll(".races img");
+
+        // imgs.forEach((ele) => {
+        //     ele.addEventListener("click",()=>{
+        //         let largeImg = document.querySelector("#img-lg");
+        //         largeImg.setAttribute('src',ele.getAttribute('src'));
+        //         largeImg.style.transform = 'scale(1)'
+
+        //         races.classList.add("no-slide");
+
+        //         document.querySelector(".racesWrapper").classList.remove("slide")
+        //     })
+        // })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        html,body{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        nav{
+            position: fixed;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav > div {
+            display: flex;
+            gap: 50px;
+        }
+
+        .slider{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slider-wrapper{
+            width: max-content;
+            padding: 0 150px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .slide {
+            width: 500px;
+            height: 500px;
+            background: gray;
+        }
+
+        .slide img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .marker-wrapper{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: max-content;
+            height: 100vh;
+        }
+
+        .marker {
+            position: relative;
+            width: 2px;
+            height: 100%;
+            background: #000;
+        }
+
+        .marker::after{
+            position: absolute;
+            content: "";
+            display: flex;
+            top: 50px;
+            left: -20px;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 100%;
+        }
+
+        .active-slide {
+            position: absolute;
+            top: 60px;
+            left: 40px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <div>Codegrid</div>
+            <div>One block at a time</div>
+        </div>
+        <div>Est 2023</div>
+    </nav>
+    <div class="marker-wrapper">
+        <div class="marker">
+            <div class="grab"></div>
+        </div>
+        <div class="active-slide">1/10</div>
+    </div>
+    <div class="slider">
+        <div class="slider-wrapper">
+            <div class="slide">
+                <img src="./imgs/1.jpg" alt="1">
+            </div>
+            <div class="slide">
+                <img src="./imgs/2.jpg" alt="1">
+            </div>
+            <div class="slide">
+                <img src="./imgs/3.jpg" alt="1">
+            </div>
+            <div class="slide">
+                <img src="./imgs/2.jpg" alt="1">
+            </div>
+            <div class="slide">
+                <img src="./imgs/3.jpg" alt="1">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script>
+        let target = 0;
+        let current = 0;
+        let ease = .075;
+
+        const slider = document.querySelector(".slider");
+        const sliderWrapper = document.querySelector(".slider-wrapper");
+        const markerWrapper = document.querySelector(".marker-wrapper");
+        const activeSlide = document.querySelector(".active-slide");
+
+        let maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+
+        function lerp(start, end , factor){
+            return start + (end - start ) * factor;
+        }
+
+        function updateActiveSliderNumber(markerMove, markerMaxMove){
+            const partWidth = markerMaxMove / 3;
+            let currentPart = Math.round((markerMove - 70) / partWidth) + 1;
+            currentPart = Math.min(3, currentPart);
+            activeSlide.textContent = `${currentPart}/3`
+        }
+
+        function update(){
+            current = lerp(current, target, ease);
+
+            gsap.set(".slider-wrapper", {
+                x: -current
+            })
+
+            let moveRatio = current / maxScroll;
+
+            let markerMaxMove = window.innerWidth - markerWrapper.offsetWidth - 170;
+            let markerMove = 70 + moveRatio * markerMaxMove;
+            gsap.set(".marker-wrapper", {
+                x: markerMove
+            })
+
+            updateActiveSliderNumber(markerMove, markerMaxMove);
+
+            // requestAnimationFrame(update)
+        }
+
+        window.addEventListener("resize", ()=> {
+            maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+        })
+
+        window.addEventListener("wheel", (e) => {
+            target = e.deltaY;
+
+            target = Math.max(0, target);
+            target = Math.min(maxScroll, target);
+
+            update();
+        })
+
+    </script>
+</body>
+</html>
